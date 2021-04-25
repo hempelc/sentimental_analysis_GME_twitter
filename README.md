@@ -622,6 +622,6 @@ plt.show()
 
 
     
-![png](Sentimental_Analysis_Twitter_GameStop_files/Sentimental_Analysis_Twitter_GameStop_34_0.png)
+![image](figure.png))
     
 
