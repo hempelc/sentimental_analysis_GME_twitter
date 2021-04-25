@@ -144,18 +144,18 @@ print("Naive Bayes classifier model accuracy is:", classify.accuracy(classifier,
 print(classifier.show_most_informative_features(10))
 ```
 
-    Naive Bayes classifier model accuracy is: 0.9933333333333333
+    Naive Bayes classifier model accuracy is: 0.9973333333333333
     Most Informative Features
-                          :( = True           Negati : Positi =   2059.5 : 1.0
-                          :) = True           Positi : Negati =   1661.7 : 1.0
-                         sad = True           Negati : Positi =     30.8 : 1.0
-                    follower = True           Positi : Negati =     21.9 : 1.0
-                         x15 = True           Negati : Positi =     19.5 : 1.0
-                  bestfriend = True           Positi : Negati =     14.7 : 1.0
-                    followed = True           Negati : Positi =     14.5 : 1.0
-                         ice = True           Negati : Positi =     14.2 : 1.0
-                   community = True           Positi : Negati =     13.1 : 1.0
-                       cream = True           Negati : Positi =     12.9 : 1.0
+                          :( = True           Negati : Positi =   2056.0 : 1.0
+                          :) = True           Positi : Negati =   1653.6 : 1.0
+                    follower = True           Positi : Negati =     33.0 : 1.0
+                         sad = True           Negati : Positi =     24.4 : 1.0
+                        glad = True           Positi : Negati =     21.7 : 1.0
+                         bam = True           Positi : Negati =     19.7 : 1.0
+                        miss = True           Negati : Positi =     15.1 : 1.0
+                        damn = True           Negati : Positi =     15.0 : 1.0
+                    followed = True           Negati : Positi =     14.2 : 1.0
+                         x15 = True           Negati : Positi =     13.7 : 1.0
     None
 
 
@@ -223,7 +223,7 @@ ratio_pos_neg=tweet_classification.count('Positive')/tweet_classification.count(
 print(f"Ratio positive:negative tweets: {ratio_pos_neg}")
 ```
 
-    Ratio positive:negative tweets: 1.0248704663212436
+    Ratio positive:negative tweets: 0.8842815814850531
 
 
 # 3. Obtain GME stock market data from 28th January 2021 and graph it against GME tweet emotions
@@ -383,23 +383,23 @@ volume_df.head()
   <tbody>
     <tr>
       <th>2021-01-27 00:00:00</th>
-      <td>3076992</td>
+      <td>8298280</td>
     </tr>
     <tr>
       <th>2021-01-27 00:15:00</th>
-      <td>9413857</td>
+      <td>8733840</td>
     </tr>
     <tr>
       <th>2021-01-27 00:30:00</th>
-      <td>6209573</td>
+      <td>5123645</td>
     </tr>
     <tr>
       <th>2021-01-27 00:45:00</th>
-      <td>1909628</td>
+      <td>9410973</td>
     </tr>
     <tr>
       <th>2021-01-27 01:00:00</th>
-      <td>1442078</td>
+      <td>7742373</td>
     </tr>
   </tbody>
 </table>
@@ -531,35 +531,35 @@ mergedDf.head()
       <td>2021-01-27 19:45:00</td>
       <td>1</td>
       <td>0</td>
-      <td>6370644</td>
+      <td>6003334</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2021-01-27 22:45:00</td>
       <td>1</td>
       <td>0</td>
-      <td>2655309</td>
+      <td>7983003</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2021-01-28 00:15:00</td>
       <td>1</td>
       <td>0</td>
-      <td>1645826</td>
+      <td>6843070</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2021-01-28 01:15:00</td>
       <td>1</td>
       <td>0</td>
-      <td>1494425</td>
+      <td>7995845</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2021-01-28 02:15:00</td>
       <td>1</td>
       <td>1</td>
-      <td>1353470</td>
+      <td>3291966</td>
     </tr>
   </tbody>
 </table>
@@ -617,6 +617,7 @@ ax2.plot(mergedDf["time"], mergedDf["volume"], color='tab:green')
 
 fig.tight_layout() # otherwise the right y-label is slightly clipped
 fig.autofmt_xdate() # automatically rotates x axis labels
+plt.show()
 ```
 
 
