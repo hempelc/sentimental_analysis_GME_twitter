@@ -1,5 +1,7 @@
 # *_Sentimental analysis on GME tweets and relation to GME value_*
 
+<img src="https://github.com/hempelc/sentimental_analysis_GME_twitter/blob/main/image.png" alt="GME" width="400"/>
+
 This notebook tests if the emotions of GameStop stock (GME)-related tweets were correlated to the GME value during the GME boom on 28th January 2021.
 
 Therefore, we train a model to classify tweets into "positive" and "negative" based on emotions. <br/> Then we scrape tweets from the 28th January 2021 that contain GME-relevant hashtags. <br/>  Finally, we obtain GME stock market data from 28th January 2021 and graph it against GME tweet emotions.
@@ -89,7 +91,7 @@ def remove_noise(tweet_tokens, stop_words = ()):
     return cleaned_tokens
 
 
-# Get tweets from list for model 
+# Get tweets from list for model
 def get_tweets_for_model(cleaned_tokens_list):
     for tweet_tokens in cleaned_tokens_list:
         yield dict([token, True] for token in tweet_tokens)
@@ -130,7 +132,7 @@ negative_dataset = [(tweet_dict, "Negative")
 dataset = positive_dataset + negative_dataset
 ```
 
-## 1.4 Train Naive Bayes classifier model 
+## 1.4 Train Naive Bayes classifier model
 
 
 ```python
@@ -204,7 +206,7 @@ gme_tweets = []
 for tweets in tweetsdict:
   for tweet in tweets:
     gme_tweets.append(tweet['full_text'])
-    
+
 print("Total number of tweets: ", len(gme_tweets))
 ```
 
@@ -219,7 +221,7 @@ tweet_classification=[]
 for tweet in gme_tweets:
   tokens=remove_noise(word_tokenize(tweet))
   tweet_classification.append(classifier.classify(dict([token, True] for token in tokens)))
-    
+
 ratio_pos_neg=tweet_classification.count('Positive')/tweet_classification.count('Negative')
 
 print(f"Ratio positive:negative tweets: {ratio_pos_neg}")
@@ -547,6 +549,5 @@ fig.savefig("figure.png", facecolor='white')
 ```
 
 
-    
-![png](https://github.com/hempelc/sentimental_analysis_GME_twitter/blob/main/figure.png)    
 
+![png](https://github.com/hempelc/sentimental_analysis_GME_twitter/blob/main/figure.png)    
