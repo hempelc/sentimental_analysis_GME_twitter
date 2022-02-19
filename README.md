@@ -6,6 +6,8 @@ Therefore, we train a model to classify tweets into "positive" and "negative" ba
 
 The model training follows the sentimental analysis tutorial posted here: https://www.digitalocean.com/community/tutorials/how-to-perform-sentiment-analysis-in-python-3-using-the-natural-language-toolkit-nltk
 
+Note: ***this notebook is broken***! Extracting old stock market data is not free - at the point in time when I generated this notebook, I was not able to access the relevant stock market data anymore!
+
 # Required modules
 
 
@@ -144,18 +146,18 @@ print("Naive Bayes classifier model accuracy is:", classify.accuracy(classifier,
 print(classifier.show_most_informative_features(10))
 ```
 
-    Naive Bayes classifier model accuracy is: 0.9963333333333333
+    Naive Bayes classifier model accuracy is: 0.9946666666666667
     Most Informative Features
-                          :( = True           Negati : Positi =   2051.6 : 1.0
-                          :) = True           Positi : Negati =    989.4 : 1.0
-                    follower = True           Positi : Negati =     35.3 : 1.0
-                         sad = True           Negati : Positi =     29.9 : 1.0
-                    followed = True           Negati : Positi =     25.4 : 1.0
-                         bam = True           Positi : Negati =     21.2 : 1.0
-                        glad = True           Positi : Negati =     19.9 : 1.0
-                      arrive = True           Positi : Negati =     18.0 : 1.0
-                   community = True           Positi : Negati =     14.5 : 1.0
-                          aw = True           Negati : Positi =     12.9 : 1.0
+                          :( = True           Negati : Positi =   2078.6 : 1.0
+                    follower = True           Positi : Negati =     34.6 : 1.0
+                         sad = True           Negati : Positi =     33.4 : 1.0
+                         bam = True           Positi : Negati =     21.4 : 1.0
+                        blog = True           Positi : Negati =     14.8 : 1.0
+                      arrive = True           Positi : Negati =     13.1 : 1.0
+                        glad = True           Positi : Negati =     12.5 : 1.0
+                     welcome = True           Positi : Negati =     12.2 : 1.0
+                     awesome = True           Positi : Negati =     12.1 : 1.0
+                        kill = True           Negati : Positi =     11.8 : 1.0
     None
 
 
@@ -223,12 +225,14 @@ ratio_pos_neg=tweet_classification.count('Positive')/tweet_classification.count(
 print(f"Ratio positive:negative tweets: {ratio_pos_neg}")
 ```
 
-    Ratio positive:negative tweets: 0.9717457114026236
+    Ratio positive:negative tweets: 1.1543550165380374
 
 
 # 3. Obtain GME stock market data from 28th January 2021 and graph it against GME tweet emotions
 
 ## 3.1 Download GME stock data
+
+Note: the selected time frame is not the time frame in which the GME boom occurred - this data was not freely available anymore.
 
 
 ```python
@@ -239,7 +243,7 @@ tickerSymbol = 'GME'
 tickerData = yf.Ticker(tickerSymbol)
 
 # Get historical prices for this ticker
-tickerDf = tickerData.history(period='1d', interval='15m', start='2021-3-10', end='2021-3-11')
+tickerDf = tickerData.history(period='1d', interval='15m', start='2022-01-10', end='2022-01-30')
 
 #see your data
 tickerDf.head()
@@ -249,7 +253,19 @@ tickerDf.head()
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -275,52 +291,52 @@ tickerDf.head()
   </thead>
   <tbody>
     <tr>
-      <th>2021-03-10 09:30:00-05:00</th>
-      <td>264.000000</td>
-      <td>288.679993</td>
-      <td>258.240112</td>
-      <td>280.000000</td>
-      <td>6208922</td>
+      <th>2022-01-10 09:30:00-05:00</th>
+      <td>134.990005</td>
+      <td>135.690002</td>
+      <td>126.500000</td>
+      <td>127.643402</td>
+      <td>755828</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>2021-03-10 09:45:00-05:00</th>
-      <td>280.000000</td>
-      <td>294.449890</td>
-      <td>278.760010</td>
-      <td>282.350098</td>
-      <td>2956610</td>
+      <th>2022-01-10 09:45:00-05:00</th>
+      <td>127.550003</td>
+      <td>129.470001</td>
+      <td>126.822800</td>
+      <td>127.639999</td>
+      <td>350949</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>2021-03-10 10:00:00-05:00</th>
-      <td>282.890015</td>
-      <td>297.189911</td>
-      <td>280.736786</td>
-      <td>292.499908</td>
-      <td>2170396</td>
+      <th>2022-01-10 10:00:00-05:00</th>
+      <td>127.510002</td>
+      <td>128.249893</td>
+      <td>120.000099</td>
+      <td>121.580002</td>
+      <td>680539</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>2021-03-10 10:15:00-05:00</th>
-      <td>292.491302</td>
-      <td>304.000000</td>
-      <td>288.700012</td>
-      <td>292.000000</td>
-      <td>2894843</td>
+      <th>2022-01-10 10:15:00-05:00</th>
+      <td>121.889999</td>
+      <td>125.199898</td>
+      <td>121.440002</td>
+      <td>124.260101</td>
+      <td>461321</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>2021-03-10 10:30:00-05:00</th>
-      <td>291.850494</td>
-      <td>294.699890</td>
-      <td>283.579987</td>
-      <td>293.110107</td>
-      <td>1897251</td>
+      <th>2022-01-10 10:30:00-05:00</th>
+      <td>124.269997</td>
+      <td>124.269997</td>
+      <td>120.300003</td>
+      <td>120.839104</td>
+      <td>321064</td>
       <td>0</td>
       <td>0</td>
     </tr>
@@ -331,6 +347,8 @@ tickerDf.head()
 
 
 ## 3.2 Simulate volume of stock dataset
+
+Note: we simulate stock dataset volume for the GME boom time frame.
 
 
 ```python
@@ -344,7 +362,19 @@ volume_df.head()
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -359,23 +389,23 @@ volume_df.head()
   <tbody>
     <tr>
       <th>2021-01-27 00:00:00</th>
-      <td>8610770</td>
+      <td>3215888</td>
     </tr>
     <tr>
       <th>2021-01-27 00:15:00</th>
-      <td>4011928</td>
+      <td>8463827</td>
     </tr>
     <tr>
       <th>2021-01-27 00:30:00</th>
-      <td>6883544</td>
+      <td>6587678</td>
     </tr>
     <tr>
       <th>2021-01-27 00:45:00</th>
-      <td>7400409</td>
+      <td>9132865</td>
     </tr>
     <tr>
       <th>2021-01-27 01:00:00</th>
-      <td>8627695</td>
+      <td>4832439</td>
     </tr>
   </tbody>
 </table>
@@ -384,6 +414,8 @@ volume_df.head()
 
 
 ## 3.3 Process tweet date and time
+
+Note: this needs to be polished to accurately reflect times of the web-scraped tweets.
 
 
 ```python
@@ -408,7 +440,19 @@ tweet_df_counts_clean.head()
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -466,7 +510,19 @@ mergedDf.head()
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -483,35 +539,35 @@ mergedDf.head()
       <td>2021-01-27 19:45:00</td>
       <td>1</td>
       <td>0</td>
-      <td>7614635</td>
+      <td>4688632</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2021-01-27 22:45:00</td>
       <td>1</td>
       <td>0</td>
-      <td>8860587</td>
+      <td>4097852</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2021-01-28 00:15:00</td>
       <td>1</td>
       <td>0</td>
-      <td>6075395</td>
+      <td>3240474</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2021-01-28 01:15:00</td>
       <td>1</td>
       <td>0</td>
-      <td>9487930</td>
+      <td>3391354</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2021-01-28 02:15:00</td>
       <td>1</td>
       <td>1</td>
-      <td>6255715</td>
+      <td>1011225</td>
     </tr>
   </tbody>
 </table>
@@ -521,37 +577,7 @@ mergedDf.head()
 
 ## 3.5 Plot volume against positive and negative tweets
 
-
-```python
-# import plotly.graph_objects as go
-# from plotly.subplots import make_subplots
-
-# # Create figure with secondary y-axis
-# fig = make_subplots(specs=[[{"secondary_y": True}]])
-
-# # Add traces
-
-# fig.add_trace(go.Line(x=mergedDf["time"], y=mergedDf["class_Negative"]),secondary_y=False)
-
-# fig.add_trace(go.Line(x=mergedDf["time"], y=mergedDf["class_Positive"]),secondary_y=False)
-
-# fig.add_trace(go.Line(x=mergedDf["time"], y=mergedDf["volume"]),secondary_y=True)
-
-
-# # Add figure title
-# fig.update_layout(
-#     title_text="Double Y Axis Example"
-# )
-
-# # Set x-axis title
-# fig.update_xaxes(title_text="xaxis title")
-
-# # Set y-axes titles
-# fig.update_yaxes(title_text="<b>primary</b> yaxis title", secondary_y=False)
-# fig.update_yaxes(title_text="<b>secondary</b> yaxis title", secondary_y=True)
-
-# fig.show()
-```
+Note: this graph is made from simulated data, so it doesn't make sense.
 
 
 ```python
@@ -574,6 +600,6 @@ fig.savefig("figure.png", facecolor='white')
 
 
     
-![image](figure.png)
+![png](Sentimental_Analysis_Twitter_GameStop_files/Sentimental_Analysis_Twitter_GameStop_38_0.png)
     
 
