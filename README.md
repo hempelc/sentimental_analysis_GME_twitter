@@ -510,19 +510,6 @@ mergedDf.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -600,6 +587,5 @@ fig.savefig("figure.png", facecolor='white')
 
 
     
-![png](Sentimental_Analysis_Twitter_GameStop_files/Sentimental_Analysis_Twitter_GameStop_38_0.png)
-    
+![png](https://github.com/hempelc/sentimental_analysis_GME_twitter/blob/main/figure.png)    
 
